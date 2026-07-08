@@ -1,0 +1,30 @@
+[project]
+name = "lexisgraph"
+version = "0.1.0"
+description = "Enterprise legal RAG with hybrid retrieval, knowledge graph, and RAGAS-gated evaluation"
+requires-python = ">=3.11"
+dependencies = [
+    "qdrant-client>=1.12",
+    "sentence-transformers>=3.0",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "ollama>=0.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

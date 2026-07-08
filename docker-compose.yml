@@ -1,0 +1,24 @@
+# One command brings up the infrastructure:  docker compose up -d
+#
+# Uses a Docker-managed named volume (qdrant_data) rather than a bind mount
+# to a host path. On WSL2 / the Windows drive, named volumes avoid the
+# permission errors that bind mounts into /mnt/c/ can cause.
+
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: lexisgraph-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    restart: unless-stopped
+
+  # Neo4j and Elasticsearch get added in Week 1/2 as we reach those retrievers.
+  # neo4j:
+  #   image: neo4j:5
+  #   ...
+
+volumes:
+  qdrant_data:
