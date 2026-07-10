@@ -11,9 +11,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf-8", extra="ignore"
-    )
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     # --- Qdrant (vector store) ---
     qdrant_host: str = "localhost"
@@ -25,8 +23,8 @@ class Settings(BaseSettings):
     embedding_dim: int = 384
 
     # --- Chunking ---
-    chunk_size: int = 800       # characters per chunk
-    chunk_overlap: int = 150    # overlap between consecutive chunks
+    chunk_size: int = 800  # characters per chunk
+    chunk_overlap: int = 150  # overlap between consecutive chunks
 
     # --- LLM (Ollama, local) ---
     ollama_host: str = "http://localhost:11434"
@@ -34,6 +32,8 @@ class Settings(BaseSettings):
 
     # --- Data ---
     cuad_dir: str = "data/cuad"  # override in .env with your real path
+
+    reranker_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
 
 @lru_cache
