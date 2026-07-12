@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+.env
+
+# uv
+# (uv.lock IS committed - it's your lockfile, keep it)
+
+# Data & models (large, regenerable)
+data/
+*.zip
+
+# OS
+.DS_Store
