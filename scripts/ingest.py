@@ -19,10 +19,10 @@ from lexisgraph.retrieval.embedder import Embedder
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--limit", type=int, default=20,
-                        help="Number of contracts to ingest (start small).")
-    parser.add_argument("--recreate", action="store_true",
-                        help="Drop and rebuild the collection.")
+    parser.add_argument(
+        "--limit", type=int, default=20, help="Number of contracts to ingest (start small)."
+    )
+    parser.add_argument("--recreate", action="store_true", help="Drop and rebuild the collection.")
     args = parser.parse_args()
 
     print("Loading embedding model...")
