@@ -7,7 +7,6 @@ Neo4j retrievers will sit alongside it and get fused later (RRF).
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, PointStruct, VectorParams
@@ -15,13 +14,8 @@ from qdrant_client.models import Distance, PointStruct, VectorParams
 from lexisgraph.config import get_settings
 from lexisgraph.ingest.chunker import Chunk
 from lexisgraph.retrieval.embedder import Embedder
+from lexisgraph.retrieval.base import RetrievedChunk
 
-
-@dataclass
-class RetrievedChunk:
-    text: str
-    source: str
-    score: float
 
 
 class DenseRetriever:
@@ -69,7 +63,7 @@ class DenseRetriever:
             )
         return len(points)
 
-    def search(self, query: str, limit: int = 5) -> list[RetrievedChunk]:
+    def retrieve(self, query: str, limit: int = 5) -> list[RetrievedChunk]:
         qvec = self.embedder.encode_one(query)
         hits = self.client.query_points(
             collection_name=self.collection, query=qvec, limit=limit

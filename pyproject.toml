@@ -12,6 +12,7 @@ dependencies = [
     "uvicorn>=0.30",
     "ollama>=0.3",
     "datasets>=5.0.0",
+    "rank-bm25>=0.2.2",
 ]
 
 [project.optional-dependencies]
